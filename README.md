@@ -24,5 +24,5 @@ O projeto está atualmente em uso dentro da empresa [Supermercado Pais e Filho -
 - **[Livewire](https://tighten.co](https://laravel-livewire.com/))**
 - **[Boostrap](https://kirschbaumdevelopment.com](https://getbootstrap.com/))**
 
-## Ilustrações
+## Imagens
 <img src="https://i.ibb.co/YRgpfMy/Captura-de-tela-2023-10-16-125414.png" alt="Login"> <img src="https://i.ibb.co/0fj6V8P/Captura-de-tela-2023-10-16-125712.png" alt="Registro"> 
