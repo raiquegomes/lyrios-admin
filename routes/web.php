@@ -104,5 +104,8 @@ Route::middleware([
         return view('cesta/cesta-basica-controller');
     })->name('cesta');
 
-    //
+    //PRODUTOS
+    Route::get('/products', function () {
+        return view('products/matriz/products');
+    })->name('products');
 });
