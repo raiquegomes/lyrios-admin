@@ -105,7 +105,7 @@ Route::middleware([
     })->name('cesta');
 
     //PRODUTOS
-    Route::get('/products', function () {
-        return view('products/matriz/products');
-    })->name('products');
+    Route::get('/functions/products/add', function () {
+        return view('functions/products/show');
+    })->name('Addproducts');
 });

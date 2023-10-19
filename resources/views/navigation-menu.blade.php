@@ -67,6 +67,12 @@
                                 <p>Cesta Básica</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('Addproducts')}}" class="nav-link {{ request()->routeIs('Addproducts') ? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Adicionar Produto</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item {{ (request()-> is('tickets/*')) ? 'menu-open' : '' }}">
@@ -88,23 +94,6 @@
                             <a href="{{ route('produtsChamados')}}" class="nav-link {{ request()->routeIs('produtsChamados') ? 'active' : ''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Geren. de Ticket's</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class='nav-link'>
-                        <i class="nav-icon fas fa-ticket-alt"></i>
-                        <p>
-                          Produtos
-                          <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('products')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Adicionar Produto</p>
                             </a>
                         </li>
                     </ul>
