@@ -11,7 +11,7 @@
                 @livewire('products-add')
             </section>
             <section class="col-lg-5 connectedSortable">
-                @livewire('cut-into-products-clear')
+                @livewire('products-matriz')
             </section>
         </div>
     </div>

@@ -10,7 +10,7 @@ class TicketPagamentoFinanceiro extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'status', 'motived', 'description', 'filename',
+        'user_id', 'status', 'motived', 'description',
     ];
 
 }

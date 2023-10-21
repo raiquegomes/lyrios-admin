@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('filename_tickets', function (Blueprint $table) {
+        Schema::create('file_guias', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('ticket_id');
-            $table->text('filename')->nullable();
+            $table->string('guia_id');
+            $table->string('file_name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filename_tickets');
+        Schema::dropIfExists('file_guias');
     }
 };

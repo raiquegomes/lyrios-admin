@@ -16,6 +16,7 @@
                             <option value="2">Remover produto da promoção</option>
                             <option value="3">Inconsistência de valor de produto</option>
                             <option value="4">Duvida sobre produto</option>
+                            <option value="5">Cadastro de Receita</option>
                         </select>
                         @error('status_motived')<span id="status_motived-error" class="error invalid-feedback">{{$message}}</span>@enderror
                     </div>
@@ -67,91 +68,163 @@
                         @enderror
                     </div>
                 </div>
+                <div wire:ignore.self class="modal fade" id="modal-xl">
+                    <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h4 class="modal-title">Produtos</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">N°</th>
+                                    <th scope="col">Codigo de Barra</th>
+                                    <th scope="col">Codigo Interno</th>
+                                    <th scope="col">Nome do Produto</th>
+                                    <th scope="col">Quantidade no Estoque</th>
+                                    <th scope="col">Data de Validade</th>
+                                    <th scope="col">Preço Sugerido</th>
+                                    <th>Opções</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($products as $index => $product)
+                                <tr>
+                                    <th scope="row">{{$index}}</th>
+                                    <td>
+                                        <input type="text" wire:model="products.{{ $index }}.ean" class="form-control @error('products.'.$index.'.ean') is-invalid @enderror">
+                                        @error('products.'.$index.'.ean')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input type="text" wire:model="products.{{ $index }}.internal_id" class="form-control @error('products.'.$index.'.internal_id') is-invalid @enderror" readonly>
+                                        @error('products.'.$index.'.internal_id')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input type="text" wire:model="products.{{ $index }}.name" class="form-control @error('products.'.$index.'.name') is-invalid @enderror" readonly>
+                                        @error('products.'.$index.'.name')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input type="number" wire:model="products.{{ $index }}.Qty" class="form-control @error('products.'.$index.'.Qty') is-invalid @enderror">
+                                        @error('products.'.$index.'.Qty')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input type="date" wire:model="products.{{ $index }}.date_validated" class="form-control @error('products.'.$index.'.date_validated') is-invalid @enderror">
+                                        @error('products.'.$index.'.date_validated')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input type="text" wire:model="products.{{ $index }}.safe_price" class="form-control @error('products.'.$index.'.safe_price') is-invalid @enderror">
+                                        @error('products.'.$index.'.safe_price')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <button type="button" wire:click="removeProduct({{ $index }})" class="btn btn-danger">Remover</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+                            <button type="button" wire:click="addProduct" class="btn btn-success">Adicionar Produto</button>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            @if($products)
+                            <button type="button" wire:click="refreshInformacoes" class="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i></button>
+                            @endif
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            @endif
+            @if($status_motived == 5)
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="exampleInput1">RECEITA</label><br>
+                    <button type="button" class="btn btn-info @error('products') is-invalid @enderror" data-toggle="modal" data-target="#modal-xl">
+                        Informar a Receita
+                    </button>
+                    @error('products')
+                    <span class="error invalid-feedback">
+                        {{$message}}
+                    </span>
+                    @enderror
+                </div>
+            </div>
             <div wire:ignore.self class="modal fade" id="modal-xl">
                 <div class="modal-dialog modal-xl">
-                  <div class="modal-content">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">Produtos</h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h4 class="modal-title">Receita</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                     </div>
                     <div class="modal-body">
-
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">N°</th>
-                                <th scope="col">Codigo de Barra</th>
-                                <th scope="col">Codigo Interno</th>
-                                <th scope="col">Nome do Produto</th>
-                                <th scope="col">Quantidade no Estoque</th>
-                                <th scope="col">Data de Validade</th>
-                                <th scope="col">Preço Sugerido</th>
-                                <th>Opções</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($products as $index => $product)
-                              <tr>
-                                <th scope="row">{{$index}}</th>
-                                <td>
-                                    <input type="text" wire:model="products.{{ $index }}.ean" class="form-control @error('products.'.$index.'.ean') is-invalid @enderror">
-                                    @error('products.'.$index.'.ean')
-                                        <span class="error invalid-feedback">{{ $message }}</p>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <input type="text" wire:model="products.{{ $index }}.internal_id" class="form-control @error('products.'.$index.'.internal_id') is-invalid @enderror" readonly>
-                                    @error('products.'.$index.'.internal_id')
-                                        <span class="error invalid-feedback">{{ $message }}</p>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <input type="text" wire:model="products.{{ $index }}.name" class="form-control @error('products.'.$index.'.name') is-invalid @enderror" readonly>
-                                    @error('products.'.$index.'.name')
-                                        <span class="error invalid-feedback">{{ $message }}</p>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <input type="number" wire:model="products.{{ $index }}.Qty" class="form-control @error('products.'.$index.'.Qty') is-invalid @enderror">
-                                    @error('products.'.$index.'.Qty')
-                                        <span class="error invalid-feedback">{{ $message }}</p>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <input type="date" wire:model="products.{{ $index }}.date_validated" class="form-control @error('products.'.$index.'.date_validated') is-invalid @enderror">
-                                    @error('products.'.$index.'.date_validated')
-                                        <span class="error invalid-feedback">{{ $message }}</p>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <input type="text" wire:model="products.{{ $index }}.safe_price" class="form-control @error('products.'.$index.'.safe_price') is-invalid @enderror">
-                                    @error('products.'.$index.'.safe_price')
-                                        <span class="error invalid-feedback">{{ $message }}</p>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <button type="button" wire:click="removeProduct({{ $index }})" class="btn btn-danger">Remover</button>
-                                </td>
-                              </tr>
-                            @endforeach
-                            </tbody>
-                          </table>
-
-                          <button type="button" wire:click="addProduct" class="btn btn-success">Adicionar Produto</button>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-head-fixed text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th scope="col">N°</th>
+                                    <th scope="col">Nome do Produto</th>
+                                    <th scope="col">Quantidade (KG)</th>
+                                    <th>Opções</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($products as $index => $product)
+                                <tr>
+                                    <th scope="row">{{$index}}</th>
+                                    <td>
+                                        <input type="text" wire:model="products.{{ $index }}.name" class="form-control @error('products.'.$index.'.name') is-invalid @enderror" readonly>
+                                        @error('products.'.$index.'.name')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input type="text" wire:model="products.{{ $index }}.safe_price" class="form-control @error('products.'.$index.'.safe_price') is-invalid @enderror">
+                                        @error('products.'.$index.'.safe_price')
+                                            <span class="error invalid-feedback">{{ $message }}</p>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <button type="button" wire:click="removeProduct({{ $index }})" class="btn btn-danger">Remover</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <button type="button" wire:click="addProduct" class="btn btn-success">Adicionar Produto</button>
                     </div>
                     <div class="modal-footer justify-content-between">
                         @if($products)
                         <button type="button" wire:click="refreshInformacoes" class="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i></button>
                         @endif
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                     </div>
-                  </div>
-                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
-              </div>
+            </div>
             @endif
             @if($status_motived == 3 and 4 )
                 <div class="col-sm-6">

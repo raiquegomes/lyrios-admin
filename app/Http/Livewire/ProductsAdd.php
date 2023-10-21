@@ -3,17 +3,26 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Products;
 
 class ProductsAdd extends Component
 {
-    public $ean;
-    public $id_product;
-    public $nome;
+    public $ean, $id_product, $nome;
 
     protected $rules = [
         'ean' => 'required',
-        'id_product' => 'required',
+        'id_product' => 'required|unique:products,internal_id',
         'nome' => 'required',
+    ];
+
+    protected $messages = [
+        'ean.required' => 'Informe o codigo de barra',
+
+        'id_product.required' => 'Digite o N° interno do produto',
+        'id_product.unique' => 'O ID interno do produto já foi usado!',
+
+        'nome.required' => 'Informe o nome do produto.',
+
     ];
 
     public function render()
@@ -38,6 +47,15 @@ class ProductsAdd extends Component
             'title' => 'O produto : '.$createProduct->Nome.' foi criado com sucesso', 
             'text' => 'O produto foi cadastrado com sucesso!',
         ]);
+
+    }
+
+
+    private function resetCreateForm(){
+
+        $this->ean = '';
+        $this->id_product = '';
+        $this->nome = '';
 
     }
 

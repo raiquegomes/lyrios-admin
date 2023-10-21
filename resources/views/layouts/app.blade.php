@@ -26,6 +26,7 @@
         <!-- summernote -->
         <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
         <script src="https://kit.fontawesome.com/62d093a34b.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
         @vite(['resources/js/app.js'])
 
         <!-- Styles -->
@@ -108,21 +109,70 @@
         <!-- AdminLTE for demo purposes -->
         <script src="{{ asset('dist/js/demo.js')}}"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="{{ asset('dist/js/pages/dashboard.js')}}"></script>
         <script src="{{ asset('plugins/jquery-mask/jquery.mask.min.js') }}"></script>
         <script src="{{ asset('plugins/jquery-mask/jquery.maskMoney.min.js') }}"></script>
         <script src="{{ asset('plugins/dropzone/min/dropzone.min.js')}}"></script>
         <!-- Bootstrap Switch -->
         <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script>
+            // DropzoneJS Demo Code Start
+            Dropzone.autoDiscover = false
+
+            // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+            var previewNode = document.querySelector("#template")
+            previewNode.id = ""
+            var previewTemplate = previewNode.parentNode.innerHTML
+            previewNode.parentNode.removeChild(previewNode)
+        </script>
+<script>
+  document.addEventListener('livewire:load', function () {
+      var myDropzone = new Dropzone("#myDropzone", {
+          url: "", // Substitua 'upload' pela rota do seu controlador de upload de arquivos
+          thumbnailWidth: 80,
+          thumbnailHeight: 80,
+          parallelUploads: 20,
+          autoQueue: false,
+          previewsContainer: "#previews",
+          clickable: ".fileinput-button"
+      });
+
+      myDropzone.on("addedfile", function (file) {
+          // Adicionar o botão de iniciar o upload
+          var startButton = Dropzone.createElement("<button class='start'>Iniciar</button>");
+          file.previewElement.appendChild(startButton);
+
+          startButton.addEventListener("click", function () {
+              myDropzone.enqueueFile(file);
+          });
+      });
+
+      myDropzone.on("totaluploadprogress", function (progress) {
+          // Atualizar a barra de progresso total
+          document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+      });
+
+      myDropzone.on("sending", function (file, xhr, formData) {
+          // Mostrar a barra de progresso total e desativar o botão de início
+          document.querySelector("#total-progress").style.opacity = "1";
+          file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+      });
+
+      myDropzone.on("queuecomplete", function () {
+          // Esconder a barra de progresso total quando não estiver mais fazendo upload
+          document.querySelector("#total-progress").style.opacity = "0";
+      });
+  });
+</script>
         <script>
 
-  $('#form').on('keypress',function(event){
-    //Tecla 13 = Enter
-    if(event.which == 13) {
-      //cancela a ação padrão
-      event.preventDefault();
-    }
-  });    
+          $('#form').on('keypress',function(event){
+            //Tecla 13 = Enter
+            if(event.which == 13) {
+              //cancela a ação padrão
+              event.preventDefault();
+            }
+          });    
           $('.money').mask('#.##0,00', {reverse: true});
           $("input[data-bootstrap-switch]").each(function(){
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
