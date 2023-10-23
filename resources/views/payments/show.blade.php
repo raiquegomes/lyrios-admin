@@ -8,5 +8,7 @@
     <div>   
         @livewire('pagamento-guias')
         <x-jet-section-border />
+        @livewire('pagamento-guias-view')
+        <x-jet-section-border />
     </div>
 </x-app-layout>

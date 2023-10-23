@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('file_guias', function (Blueprint $table) {
+        Schema::create('tips_note_types', function (Blueprint $table) {
             $table->id();
-            $table->string('ticket_pagamento_financeiro_id');
             $table->string('name');
-            $table->string('url');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('file_guias');
+        Schema::dropIfExists('tips_note_types');
     }
 };

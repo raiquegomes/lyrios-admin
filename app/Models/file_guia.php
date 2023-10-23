@@ -10,6 +10,11 @@ class file_guia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'guia_id', 'file_name'
+        'ticket_pagamento_financeiro_id', 'name', 'url'
     ];
+
+    public function ticket()
+    {
+        return $this->belongsTo(TicketPagamentoFinanceiro::class);
+    }
 }

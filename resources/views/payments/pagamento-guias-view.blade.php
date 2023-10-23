@@ -29,19 +29,16 @@
                         N°
                     </th>
                     <th>
+                        Tipo de Nota
+                    </th>
+                    <th>
                         Filial
                     </th>
                     <th>
                         Status
                     </th>
                     <th>
-                        Motivo
-                    </th>
-                    <th>
-                        Gerente
-                    </th>
-                    <th>
-                        Operador
+                        Atendimento
                     </th>
                     <th>
                         Ultima Atualização
@@ -57,20 +54,15 @@
                         <th>
                             {{ $ticket->id }}
                         </th>
-                        <td >
-                        @if ($ticket->filial === 1) 
-                            <span class="badge bg-warning">(P&F - ARAÇUAI)</span> 
-                        @endif
-                        @if ($ticket->filial === 2) 
-                            <span class="badge bg-warning">(A&E - ARAÇUAI)</span> 
-                        @endif
-                        @if ($ticket->filial === 3) 
-                            <span class="badge bg-warning">(A&E - PADRE PARAISO)</span> 
-                        @endif
+                        <td>
+                            {{ $ticket->tips->name }}
+                        </td>
+                        <td> 
+                            <span class="badge bg-black"> {{ $ticket->filial->name }} </span>
                         </td>
                         <td>
                         @if($ticket->status === 0) 
-                            <span class="badge bg-success">Aberto</span> 
+                            <span class="badge bg-warning">Aberto</span> 
                         @endif
                         @if($ticket->status === 1) 
                             <span class="badge bg-danger">Fechado</span> 
@@ -80,13 +72,7 @@
                         @endif
                         </td>
                         <td>
-                            @if($ticket->motived == 1) Promoção de Validade @endif @if($ticket->motived == 2) Remover produto da promoção @endif @if($ticket->motived == 3) Inconsistência de valor de produto @endif @if($ticket->motived == 4) Duvida sobre produto @endif
-                        </td>
-                        <td>
                             <p class="font-bold ms-3 mb-0">{{ $ticket->user->name }}</p>
-                        </td>
-                        <td>
-                            <p class="font-bold ms-3 mb-0">{{ $ticket->name_operator }}</p>
                         </td>
                         <td>
                             {{ $ticket->updated_at->format('d/m/y') }} ás {{ $ticket->updated_at->format('H:i:s') }}
@@ -107,7 +93,7 @@
         {{ $tickets->links() }}
       </div>
       <!-- /.card-body -->
-      @if($isModalOpen)
-      @include('tickets.view-call-support-modal')
-      @endif
+    @if($isModalOpen)
+        @include('payments.view-call-support-modal')
+    @endif
   </div>

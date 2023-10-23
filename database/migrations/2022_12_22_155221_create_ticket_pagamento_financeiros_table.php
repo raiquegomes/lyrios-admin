@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->boolean('status');
-            $table->integer('motived');
+            $table->integer('tips_note_types_id');
             $table->longText('description');
+            $table->integer('filial_id');
+            $table->integer('user_id_closure');
             $table->timestamps();
         });
     }

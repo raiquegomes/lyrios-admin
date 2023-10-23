@@ -9,14 +9,12 @@
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <!-- Font Awesome -->
 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- Tempusdominus Bootstrap 4 -->
-        <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+        <!-- Tempusdominus Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.16/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
         <!-- overlayScrollbars -->
@@ -24,9 +22,8 @@
         <!-- Daterange picker -->
         <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
         <!-- summernote -->
-        <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
         <script src="https://kit.fontawesome.com/62d093a34b.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
         @vite(['resources/js/app.js'])
 
         <!-- Styles -->
@@ -93,15 +90,13 @@
         <script>
         $.widget.bridge('uibutton', $.ui.button)
         </script>
-        <!-- Bootstrap 4 -->
-        <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <!-- daterangepicker -->
         <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
         <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-        <!-- Tempusdominus Bootstrap 4 -->
-        <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-        <!-- Summernote -->
-        <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+        <!-- Tempusdominus Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.16/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
         <!-- overlayScrollbars -->
         <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
         <!-- AdminLTE App -->
@@ -111,59 +106,6 @@
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{ asset('plugins/jquery-mask/jquery.mask.min.js') }}"></script>
         <script src="{{ asset('plugins/jquery-mask/jquery.maskMoney.min.js') }}"></script>
-        <script src="{{ asset('plugins/dropzone/min/dropzone.min.js')}}"></script>
-        <!-- Bootstrap Switch -->
-        <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
-        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-        <script>
-            // DropzoneJS Demo Code Start
-            Dropzone.autoDiscover = false
-
-            // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-            var previewNode = document.querySelector("#template")
-            previewNode.id = ""
-            var previewTemplate = previewNode.parentNode.innerHTML
-            previewNode.parentNode.removeChild(previewNode)
-        </script>
-<script>
-  document.addEventListener('livewire:load', function () {
-      var myDropzone = new Dropzone("#myDropzone", {
-          url: "", // Substitua 'upload' pela rota do seu controlador de upload de arquivos
-          thumbnailWidth: 80,
-          thumbnailHeight: 80,
-          parallelUploads: 20,
-          autoQueue: false,
-          previewsContainer: "#previews",
-          clickable: ".fileinput-button"
-      });
-
-      myDropzone.on("addedfile", function (file) {
-          // Adicionar o botão de iniciar o upload
-          var startButton = Dropzone.createElement("<button class='start'>Iniciar</button>");
-          file.previewElement.appendChild(startButton);
-
-          startButton.addEventListener("click", function () {
-              myDropzone.enqueueFile(file);
-          });
-      });
-
-      myDropzone.on("totaluploadprogress", function (progress) {
-          // Atualizar a barra de progresso total
-          document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
-      });
-
-      myDropzone.on("sending", function (file, xhr, formData) {
-          // Mostrar a barra de progresso total e desativar o botão de início
-          document.querySelector("#total-progress").style.opacity = "1";
-          file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
-      });
-
-      myDropzone.on("queuecomplete", function () {
-          // Esconder a barra de progresso total quando não estiver mais fazendo upload
-          document.querySelector("#total-progress").style.opacity = "0";
-      });
-  });
-</script>
         <script>
 
           $('#form').on('keypress',function(event){

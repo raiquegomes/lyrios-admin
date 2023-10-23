@@ -30,7 +30,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="exampleInput1">Ferramentas</label><br>
-                <button type="button" class="btn btn-info @error('slips') is-invalid @enderror" data-toggle="modal" data-target="#modal-xl">
+                <button type="button" class="btn btn-info @error('slips') is-invalid @enderror" data-bs-toggle="modal" data-bs-target="#modal-xl">
                     Informar os boletos
                 </button>
                 @error('slips')
@@ -40,14 +40,12 @@
                 @enderror
             </div>
         </div>
-    <div wire:ignore.self class="modal fade" id="modal-xl">
+    <div wire:ignore.self class="modal fade" id="modal-xl" tabindex="-1" aria-labelledby="modal-xlLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Informe todos os boletos da nota!</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
 
@@ -80,7 +78,7 @@
                   <button type="button" wire:click="addSlips" class="btn btn-success">Adicionar +</button>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
             </div>
           </div>
           <!-- /.modal-content -->
