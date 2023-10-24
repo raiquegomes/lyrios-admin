@@ -18,6 +18,11 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label for="number_nota" class="form-label">N° da Nota</label>
+                    <input type="number" class="form-control @error('number_nota') is-invalid @enderror" id="number_nota" wire:model="number_nota" placeholder="Numero da nota">
+                    @error('number_nota')<span id="status_motived-error" class="error invalid-feedback">{{$message}}</span>@enderror
+                </div>
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="filial">Filial</label>
                         <select class="form-control @error('filial') is-invalid @enderror" id="filial" wire:model="filial">
@@ -32,7 +37,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="files">Selecione os Arquivos: </label>
-                        <input type="file" class="form-control @error('files') is-invalid @enderror" id="files" wire:model="files" multiple>
+                        <input type="file" class="form-control @error('files') is-invalid @enderror" id="files" wire:model="files">
                         @error('files')<span id="files-error" class="error invalid-feedback">{{$message}}</span>@enderror
                     </div>
                     @if ($uploading)

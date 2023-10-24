@@ -21,6 +21,10 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('filial_id');
             $table->integer('user_id_closure');
+            $table->string('file_name_comprovante_pagamento');
+            $table->string('url_comprovante_pagamento', 2048)->nullable();
+            $table->string('file_name_guia_pagamento');
+            $table->string('url_guia_pagamento', 2048)->nullable();
             $table->timestamps();
         });
     }

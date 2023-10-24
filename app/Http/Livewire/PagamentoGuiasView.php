@@ -21,6 +21,7 @@ class PagamentoGuiasView extends Component
     public $isModalOpen = 0, $filial, $ticket_id;
 
     public $file_g;
+    public $file_guia, $valor_guia;
     public $uploads = [];
     public $uploading = false;
 
@@ -105,6 +106,9 @@ class PagamentoGuiasView extends Component
         $this->ticket_id = $id;
         $this->ticket_description = $this->viewTicket->description;
         $this->ticket_status = $this->viewTicket->status;
+        $this->ticket_valor_guia = $this->viewTicket->valor_guia;
+        $this->ticket_url_guia = $this->viewTicket->url_guia_pagamento;
+        $this->ticket_name_guia = $this->viewTicket->file_name_guia_pagamento;
         $this->ticket_created = $this->viewTicket->created_at->format('d/m/y').' as '.$this->viewTicket->created_at->format('H:i:s');
         $this->ticket_updated = $this->viewTicket->updated_at->format('d/m/y').' as '.$this->viewTicket->updated_at->format('H:i:s');
         $this->ticket_filial = Filial::where('id', $this->viewTicket->filial)->pluck('name')->toArray();
@@ -120,5 +124,37 @@ class PagamentoGuiasView extends Component
     private function resetCreateForm()
     {
         $this->file_g = null;
+    }
+
+    public function uploadComprovante()
+    {
+        $validatedData = $this->validate([
+            'ticket_id' => 'required',
+            'file_guia' => 'required|max:1024',
+            'valor_guia' => 'required',
+        ]);
+        
+        // Realize o upload do arquivo
+        $filePath = $this->file_guia->store('files', 'public');
+        
+        // Atualize o modelo (TicketPagamentoFinanceiro)
+        $ticket = TicketPagamentoFinanceiro::find($this->ticket_id);
+        $ticket->update([
+            'url_guia_pagamento' => $filePath,
+            'file_name_guia_pagamento' => $this->file_guia->getClientOriginalName(),
+            'valor_guia' => $this->valor_guia,
+            'status' => 1,
+            'user_id_clasure' => Auth::user()->id,
+        ]);
+        
+        // Limpe o campo de upload e valor_guia
+        $this->reset(['file_guia', 'valor_guia']);
+        $this->dispatchBrowserEvent('closeModalGUI');
+        $this->dispatchBrowserEvent('Swal:modal', [
+            'type' => 'success',
+            'title' => 'GUIA EMITIDA!',
+            'text' => 'A Guia foi anexada no ticket, aguarde o pagamento!',
+        ]);
+
     }
 }

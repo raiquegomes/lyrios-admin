@@ -65,10 +65,10 @@
                             <span class="badge bg-warning">Aberto</span> 
                         @endif
                         @if($ticket->status === 1) 
-                            <span class="badge bg-danger">Fechado</span> 
+                            <span class="badge bg-info">Aguardando Pagamento/Guia Emitida</span> 
                         @endif
                         @if($ticket->status === 2) 
-                            <span class="badge bg-warning">Chamado em Analisado </span> 
+                            <span class="badge bg-success">Pagamento realizado! </span> 
                         @endif
                         </td>
                         <td>
@@ -80,6 +80,9 @@
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" wire:click="view({{ $ticket->id }})">
                                 <i class="fas fa-inbox"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-sm" wire:click="view({{ $ticket->id }})">
+                                <i class="fa-regular fa-file-lines"></i>
                             </button>
                         </td>
                     </tr>

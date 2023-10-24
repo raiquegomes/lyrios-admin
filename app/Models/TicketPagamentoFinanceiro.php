@@ -10,7 +10,7 @@ class TicketPagamentoFinanceiro extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'status', 'tips_note_types_id', 'description', 'filial_id', 'user_id_closure',
+        'user_id', 'status', 'tips_note_types_id', 'description', 'filial_id', 'user_id_closure', 'number_nota', 'file_name_comprovante_pagamento', 'url_comprovante_pagamento', 'file_name_guia_pagamento', 'url_guia_pagamento', 'valor_guia',
     ];
 
     public function guias()

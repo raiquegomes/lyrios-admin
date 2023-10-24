@@ -11,7 +11,7 @@ class TicketSupport extends Model
 
 
     protected $fillable = [
-        'user_id', 'filial', 'status', 'motived', 'description', 'section', 'name_operator', 'user_id_closure',
+        'user_id', 'filial', 'status', 'motived', 'description', 'section', 'name_operator', 'user_id_closure', 'file_name_comprovante_pagamento', 'url_comprovante_pagamento', 'file_name_guia_pagamento', 'url_guia_pagamento',
     ];
 
     public function user()
