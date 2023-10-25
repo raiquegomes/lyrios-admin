@@ -77,7 +77,7 @@
                         {{ $product->updated_at->format('d/m/y') }} ás {{ $product->updated_at->format('H:i:s') }}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#updatePrecoSugest" wire:click="editProductTicket({{$product->id}})">
+                        <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#updatePrecoSugest" wire:click="editProductTicket({{$product->id}})">
                             <i class="fas fa-inbox"></i>
                         </button>
                     </td>
@@ -91,7 +91,7 @@
         </table>
         {{ $products->links() }}
       </div>
-        <div wire:ignore.self class="modal fade" id="updatePrecoSugest" aria-labelledby="modalTicketLabel" aria-hidden="true">
+        <div wire:ignore.self class="modal fade" id="updatePrecoSugest" tabindex="-1" aria-labelledby="updatePrecoSugestLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -125,7 +125,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <h6>{{ __('Data de Validade') }}</h6>
-                            <input class="form-control" type="text" wire:model="date_validated" class="form-control" id="price" placeholder="Digite um preço sugestão" readonly/>
+                            <input class="form-control" type="text" wire:model="date_validated" class="form-control" id="date_validated" placeholder="Digite um preço sugestão" readonly/>
                         </div>
                         <div class="col-sm-6">
                             <h6>{{ __('Preço Sugestão') }}</h6>

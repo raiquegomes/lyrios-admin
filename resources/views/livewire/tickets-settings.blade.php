@@ -77,7 +77,7 @@
                         {{ $product->updated_at->format('d/m/y') }} ás {{ $product->updated_at->format('H:i:s') }}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#updatePrecoSugest" wire:click="editProductTicket({{$product->id}})">
+                        <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#updatePrecoSugest" wire:click="editProductTicket({{$product->id}})">
                             <i class="fas fa-inbox"></i>
                         </button>
                     </td>
@@ -96,9 +96,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Preço Sugestão</h4>
-                    <button type="button" class="close" wire:click="closeModal" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form wire:submit.prevent="updatePriceSuggest">
                 <div class="modal-body">

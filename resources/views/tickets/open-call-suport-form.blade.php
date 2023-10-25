@@ -4,8 +4,6 @@
     </x-slot>
 
     <x-slot name="form">
-
-
         <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -58,7 +56,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="exampleInput1">Ferramentas</label><br>
-                        <button type="button" class="btn btn-info @error('products') is-invalid @enderror" data-toggle="modal" data-target="#modal-xl">
+                        <button type="button" class="btn btn-info @error('products') is-invalid @enderror" data-bs-toggle="modal" data-bs-target="#produtos">
                             Informar os produtos
                         </button>
                         @error('products')
@@ -68,14 +66,12 @@
                         @enderror
                     </div>
                 </div>
-                <div wire:ignore.self class="modal fade" id="modal-xl">
+                <div wire:ignore.self class="modal fade" id="produtos" tabindex="-1" aria-labelledby="produtosLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h4 class="modal-title">Produtos</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <h4 class="modal-title">Produtos</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
 

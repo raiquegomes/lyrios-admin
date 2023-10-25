@@ -10,7 +10,7 @@ class ProductsAdd extends Component
     public $ean, $id_product, $nome;
 
     protected $rules = [
-        'ean' => 'required',
+        'ean' => 'required|unique:products,EAN',
         'id_product' => 'required|unique:products,internal_id',
         'nome' => 'required',
     ];
@@ -34,7 +34,7 @@ class ProductsAdd extends Component
     {
         $validatedData  = $this->validate();
         
-        $createProduct = TicketSupport::create([
+        $createProduct = Products::create([
             'internal_id' => $this->id_product,
             'EAN' => $this->ean,
             'Nome' => $this->nome,
