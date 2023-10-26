@@ -142,7 +142,7 @@
                             @if($products)
                             <button type="button" wire:click="refreshInformacoes" class="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i></button>
                             @endif
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->

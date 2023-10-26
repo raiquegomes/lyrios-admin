@@ -23,6 +23,7 @@ class PagamentoGuias extends Component
     public $files = [];
     public $uploads = [];
     public $uploading = false;
+    public $search = '';
 
     protected $rules = [
         'status_motived' => 'required',
@@ -57,7 +58,7 @@ class PagamentoGuias extends Component
         $createTicket = TicketPagamentoFinanceiro::create([
             'user_id' => Auth::user()->id,
             'filial_id' => $this->filial,
-            'number_nota' => 'number_nota',
+            'number_nota' => $this->number_nota,
             'status' => 0,
             'tips_note_types_id' => $this->status_motived,
             'description' => $this->description,

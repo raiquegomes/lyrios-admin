@@ -75,6 +75,12 @@
                                         <label for="ticket_valor_guia">{{ __('Valor do Imposto (R$)') }}</label>
                                     </div>
                                 </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="ticket_number_nota" placeholder="Identificação da Nota" wire:model="ticket_number_nota" disabled>
+                                        <label for="ticket_number_nota">{{ __('N° da Nota') }}</label>
+                                    </div>
+                                </div>
                                 <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                                     <label for="ticket_url_guia">{{ __('GUIA PARA PAGAMENTO: ') }}</label>
                                     <li>

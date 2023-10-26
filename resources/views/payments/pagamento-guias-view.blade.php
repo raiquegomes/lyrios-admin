@@ -35,6 +35,9 @@
                         Filial
                     </th>
                     <th>
+                        N° (Nota)
+                    </th>
+                    <th>
                         Status
                     </th>
                     <th>
@@ -59,6 +62,9 @@
                         </td>
                         <td> 
                             <span class="badge bg-black"> {{ $ticket->filial->name }} </span>
+                        </td>
+                        <td>
+                            {{ $ticket->number_nota }}
                         </td>
                         <td>
                         @if($ticket->status === 0) 

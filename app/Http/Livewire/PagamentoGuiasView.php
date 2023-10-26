@@ -24,13 +24,14 @@ class PagamentoGuiasView extends Component
     public $file_guia, $valor_guia;
     public $uploads = [];
     public $uploading = false;
-
     public $search = '';
+
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function render()
     {
         $this->filial_all = Filial::all();
-        return view('payments.pagamento-guias-view', ['tickets' => TicketPagamentoFinanceiro::orderByDesc('created_at')->simplePaginate(10),]);
+        return view('payments.pagamento-guias-view', ['tickets' => TicketPagamentoFinanceiro::orderByDesc('created_at')->search('filial_id', $this->filial)->search('number_nota', $this->search)->simplePaginate(10),]);
     }
 
     public function upload()
@@ -107,6 +108,7 @@ class PagamentoGuiasView extends Component
         $this->ticket_description = $this->viewTicket->description;
         $this->ticket_status = $this->viewTicket->status;
         $this->ticket_valor_guia = $this->viewTicket->valor_guia;
+        $this->ticket_number_nota = $this->viewTicket->number_nota;
         $this->ticket_url_guia = $this->viewTicket->url_guia_pagamento;
         $this->ticket_name_guia = $this->viewTicket->file_name_guia_pagamento;
         $this->ticket_created = $this->viewTicket->created_at->format('d/m/y').' as '.$this->viewTicket->created_at->format('H:i:s');
