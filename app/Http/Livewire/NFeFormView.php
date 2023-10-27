@@ -54,7 +54,7 @@ class NFeFormView extends Component
 
         if($operator_2 == true)
         {
-            $this->financeiro_user = $operator2->name;
+            $this->financeiro_user = $operator_2->name;
         }else{
             $this->financeiro_user = '';
         }

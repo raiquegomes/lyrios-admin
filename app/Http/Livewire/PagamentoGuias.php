@@ -23,7 +23,6 @@ class PagamentoGuias extends Component
     public $files = [];
     public $uploads = [];
     public $uploading = false;
-    public $search = '';
 
     protected $rules = [
         'status_motived' => 'required',
