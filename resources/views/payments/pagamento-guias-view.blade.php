@@ -76,6 +76,9 @@
                         @if($ticket->status === 2) 
                             <span class="badge bg-success">Pagamento realizado! </span> 
                         @endif
+                        @if($ticket->status === 5) 
+                            <span class="badge bg-danger">NÃO FOI ENCONTRADO GUIA! </span> 
+                        @endif
                         </td>
                         <td>
                             <p class="font-bold ms-3 mb-0">{{ $ticket->user->name }}</p>

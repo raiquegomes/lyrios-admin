@@ -17,6 +17,7 @@ use App\Models\User;
 class PagamentoGuiasView extends Component
 {
     use WithFileUploads;
+    use WithPagination;
 
     public $isModalOpen = 0, $filial, $ticket_id;
 
@@ -81,6 +82,21 @@ class PagamentoGuiasView extends Component
             'type' => 'success',
             'title' => 'O chamado N°: '.$close->id,
             'text' => 'O chamado foi encerrado com sucesso por '.Auth::user()->name.'!',
+        ]);
+    }
+
+    public function closeGuia($id)
+    {
+        $close = TicketPagamentoFinanceiro::find($id);
+        $close->status = 5;
+        $close->user_id_closure = Auth::user()->id;
+        $close->save();
+
+        $this->dispatchBrowserEvent('closeModalGUI');
+        $this->dispatchBrowserEvent('Swal:modal', [
+            'type' => 'success',
+            'title' => 'O chamado N°: '.$close->id,
+            'text' => 'O chamado foi encerrado com sucesso por '.Auth::user()->name.', pela falta de existência de GUIA!',
         ]);
     }
 
