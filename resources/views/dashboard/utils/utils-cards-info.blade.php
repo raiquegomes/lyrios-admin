@@ -5,7 +5,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Funcionários</span>
-                    <span class="info-box-number">{{ $team }}</span>
+                    <span class="info-box-number">243</span>
                 </div>
             </div>
             <div class="info-box mb-3 bg-success">

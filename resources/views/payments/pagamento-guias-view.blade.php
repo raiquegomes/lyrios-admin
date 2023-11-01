@@ -77,7 +77,7 @@
                             <span class="badge bg-success">Pagamento realizado! </span> 
                         @endif
                         @if($ticket->status === 5) 
-                            <span class="badge bg-danger">NÃO FOI ENCONTRADO GUIA! </span> 
+                            <span class="badge bg-danger">NÃO FOI ENCONTRADO GUIA!</span> 
                         @endif
                         </td>
                         <td>

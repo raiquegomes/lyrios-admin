@@ -121,6 +121,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ (request()-> is('rh/*')) ? 'menu-open' : '' }}">
+                    <a href="#" class='nav-link {{ (request()-> is('rh/*')) ? 'active' : '' }}'>
+                        <i class="nav-icon fa fa-person"></i>
+                        <p>
+                            RH
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('rh')}}" class="nav-link {{ request()->routeIs('rh') ? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Funcionários</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> 
                 <li class="nav-item {{ (request()-> is('task/*')) ? 'menu-open' : '' }}">
                     <a href="#" class='nav-link {{ (request()-> is('task/*')) ? 'active' : '' }}'>
                         <i class="nav-icon fas fa-list"></i>

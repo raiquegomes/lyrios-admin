@@ -108,4 +108,9 @@ Route::middleware([
     Route::get('/functions/products/add', function () {
         return view('functions/products/show');
     })->name('Addproducts');
+
+    //RH
+    Route::get('/rh/dashboard', function () {
+        return view('rh/show');
+    })->name('rh');
 });
