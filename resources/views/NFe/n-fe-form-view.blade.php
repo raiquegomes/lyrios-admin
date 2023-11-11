@@ -11,6 +11,9 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="btn-group">
+                    <input class="form-control" type="text" wire:model="search" placeholder="Procure a chave da nota" />
+                </div>
             </div>
         </div>
         <div class="card-body">

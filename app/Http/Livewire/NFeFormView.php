@@ -17,11 +17,12 @@ class NFeFormView extends Component
 
     protected $listeners = ['refreshComponentnfeview' => '$refresh'];
     public $isModalOpen = 0, $filial;
+    public $search = '';
 
     public function render()
     {
         $this->filial_all = Filial::all();
-        return view('NFe.n-fe-form-view', ['nfe' => NFs::search('filial', $this->filial)->orderByDesc('created_at')->simplePaginate(10),]);
+        return view('NFe.n-fe-form-view', ['nfe' => NFs::search('access_key', $this->search)->search('filial', $this->filial)->orderByDesc('created_at')->simplePaginate(10),]);
     }
 
     public function openModalPopover()

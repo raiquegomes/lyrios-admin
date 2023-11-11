@@ -11,7 +11,7 @@ class ProductsAdd extends Component
 
     protected $rules = [
         'ean' => 'required|unique:products,EAN',
-        'id_product' => 'required|unique:products,internal_id',
+        'id_product' => 'required',
         'nome' => 'required',
     ];
 
