@@ -122,6 +122,7 @@ class ComposerStaticInitc79b2cf35ee5cf670997ef4122ac7d58
         ),
         'L' => 
         array (
+            'Lucascudo\\LaravelPtBRLocalization\\' => 34,
             'Livewire\\' => 9,
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\Ftp\\' => 21,
@@ -405,6 +406,10 @@ class ComposerStaticInitc79b2cf35ee5cf670997ef4122ac7d58
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Lucascudo\\LaravelPtBRLocalization\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lucascudo/laravel-pt-br-localization/src',
+        ),
         'Livewire\\' => 
         array (
             0 => __DIR__ . '/..' . '/livewire/livewire/src',
@@ -646,6 +651,7 @@ class ComposerStaticInitc79b2cf35ee5cf670997ef4122ac7d58
         'App\\Http\\Livewire\\AtivictyJob' => __DIR__ . '/../..' . '/app/Http/Livewire/AtivictyJob.php',
         'App\\Http\\Livewire\\CalculatorFormEan' => __DIR__ . '/../..' . '/app/Http/Livewire/CalculatorFormEan.php',
         'App\\Http\\Livewire\\CestaBasicaController' => __DIR__ . '/../..' . '/app/Http/Livewire/CestaBasicaController.php',
+        'App\\Http\\Livewire\\ControlFuncionario' => __DIR__ . '/../..' . '/app/Http/Livewire/ControlFuncionario.php',
         'App\\Http\\Livewire\\CutIntoProducts' => __DIR__ . '/../..' . '/app/Http/Livewire/CutIntoProducts.php',
         'App\\Http\\Livewire\\CutIntoProductsClear' => __DIR__ . '/../..' . '/app/Http/Livewire/CutIntoProductsClear.php',
         'App\\Http\\Livewire\\CutIntoProductsView' => __DIR__ . '/../..' . '/app/Http/Livewire/CutIntoProductsView.php',
@@ -4820,6 +4826,7 @@ class ComposerStaticInitc79b2cf35ee5cf670997ef4122ac7d58
         'Livewire\\Wireable' => __DIR__ . '/..' . '/livewire/livewire/src/Wireable.php',
         'Livewire\\WithFileUploads' => __DIR__ . '/..' . '/livewire/livewire/src/WithFileUploads.php',
         'Livewire\\WithPagination' => __DIR__ . '/..' . '/livewire/livewire/src/WithPagination.php',
+        'Lucascudo\\LaravelPtBRLocalization\\LaravelPtBRLocalizationServiceProvider' => __DIR__ . '/..' . '/lucascudo/laravel-pt-br-localization/src/LaravelPtBRLocalizationServiceProvider.php',
         'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',

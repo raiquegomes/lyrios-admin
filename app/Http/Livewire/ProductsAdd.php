@@ -17,6 +17,7 @@ class ProductsAdd extends Component
 
     protected $messages = [
         'ean.required' => 'Informe o codigo de barra',
+        'ean.numeric' => 'O codigo de barra so deve conter digitos numericos.',
 
         'id_product.required' => 'Digite o N° interno do produto',
         'id_product.unique' => 'O ID interno do produto já foi usado!',

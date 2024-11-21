@@ -56,17 +56,15 @@ class LicitacaoControl extends Component
             $this->viewProcesso = Licitacao::findOrFail($id);
             $this->processProducts  = $this->viewProcesso->products;
             $this->issuanceNotes = $this->viewProcesso->issuanceNotes;
-            // Loop through the process products and get the issuance notes for each product
+
             foreach ($this->processProducts as $processProduct) {
                 $issuanceNotes = $processProduct->issuanceNotes;
 
-                // Loop through the issuance notes and calculate the available quantity
                 $availableQuantity = $processProduct->quantity;
                 foreach ($issuanceNotes as $issuanceNote) {
                     $availableQuantity -= $issuanceNote->quantity;
                 }
-
-                // Add the available quantity to the process product
+                
                 $processProduct->available_quantity = $availableQuantity;
             }
 

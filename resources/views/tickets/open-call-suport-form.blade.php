@@ -84,7 +84,6 @@
                                     <th scope="col">Nome do Produto</th>
                                     <th scope="col">Quantidade no Estoque</th>
                                     <th scope="col">Data de Validade</th>
-                                    <th scope="col">Preço Sugerido</th>
                                     <th>Opções</th>
                                 </tr>
                                 </thead>
@@ -119,12 +118,6 @@
                                     <td>
                                         <input type="date" wire:model="products.{{ $index }}.date_validated" class="form-control @error('products.'.$index.'.date_validated') is-invalid @enderror">
                                         @error('products.'.$index.'.date_validated')
-                                            <span class="error invalid-feedback">{{ $message }}</p>
-                                        @enderror
-                                    </td>
-                                    <td>
-                                        <input type="text" wire:model="products.{{ $index }}.safe_price" class="form-control @error('products.'.$index.'.safe_price') is-invalid @enderror">
-                                        @error('products.'.$index.'.safe_price')
                                             <span class="error invalid-feedback">{{ $message }}</p>
                                         @enderror
                                     </td>

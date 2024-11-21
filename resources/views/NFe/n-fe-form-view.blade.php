@@ -56,6 +56,9 @@
                         @if($nfs->entry == 2) 
                             <span class="badge bg-success">NOTA CONFIRMA E AJUSTADA!</span> 
                         @endif
+                        @if($nfs->entry == 3) 
+                            <span class="badge bg-info">PROBLEMAS TECNICOS (RCFE)!</span> 
+                        @endif
                         </td>
                         <td >
                             @if ($nfs->filial === 1) 

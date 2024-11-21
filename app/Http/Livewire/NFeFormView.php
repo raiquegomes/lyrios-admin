@@ -106,4 +106,21 @@ class NFeFormView extends Component
             ]);
         }
     }
+
+    public function confirmProblem($id)
+    {
+        $analisy = NFs::find($id);
+
+        $analisy->entry = 3;
+        $analisy->cpd_user_id_closure = Auth::user()->id;
+        $analisy->save();
+
+        $this->emit('refreshComponent');
+        $this->dispatchBrowserEvent('closeModalGUI');
+        $this->dispatchBrowserEvent('Swal:modal', [
+            'type' => 'success',
+            'title' => 'A informações do ID: '.$analisy->id,
+            'text' => 'O status foi atualizado com sucesso!',
+        ]);
+    }
 }

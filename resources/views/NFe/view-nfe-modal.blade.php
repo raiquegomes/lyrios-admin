@@ -75,6 +75,10 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">NF'e Confirmado!</span>
                     </button>
+                    <button wire:click="confirmProblem({{$nfe_id}})" type="button" class="btn btn-danger">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">PROBLEMAS TECNICOS (RCF)</span>
+                    </button>
                     @endif
                 @endif
                 @if(Auth::user()->current_team_id == 4)

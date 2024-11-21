@@ -62,8 +62,12 @@
                     <td>
                         @if ($product->filial === 1) 
                             <span class="badge bg-primary">(P&F)</span> 
-                        @else
+                        @endif
+                        @if ($product->filial === 2) 
                             <span class="badge bg-warning">(A&E)</span> 
+                        @endif
+                        @if ($product->filial === 3) 
+                            <span class="badge bg-warning">(A&E - PADRE PARAISO)</span> 
                         @endif
                         </td>
                         <td>

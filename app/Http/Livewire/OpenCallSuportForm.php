@@ -25,7 +25,6 @@ class OpenCallSuportForm extends Component
         'status_motived' => 'required',
         'responsavel' => 'required',
         'section' => 'required',
-        'description' => 'exclude_if:status_motived, 1|required',
 
         'products' => 'exclude_if:status_motived, 3,4|required|',
         'products.*.ean' => 'required|numeric|exists:products,EAN',
@@ -41,8 +40,6 @@ class OpenCallSuportForm extends Component
         'status_motived.required' => 'Informe o motivo da abertura do ticket.',
         'responsavel.required' => 'Informe o responsavel pelo departamento desse produto.',
         'section.required' => 'E de extrema importância o nome do lugar que destina-se o processo!',
-        'description.required' => 'Digite as informações necessárias',
-
 
         'products.required' => 'Por favor, insira as informações necessárias dos produtos!',
 
